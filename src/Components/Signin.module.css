@@ -1,0 +1,25 @@
+.Form input{
+    border:2px solid black;
+}
+.Box{
+    margin-top: 80px;
+}
+.topL{
+    
+   width: 20px;
+   text-decoration: underline;
+   cursor: pointer;
+   /* transition: 0.5s all; */
+   color: #ffc846;
+}
+
+@media (max-width:500px){
+    .Box{
+        margin-top: 80px;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    
+}
