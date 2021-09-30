@@ -1,18 +1,8 @@
-/* @keyframes move{
-    0%{
-        bottom: -330px;
-
-    }
-    100%{
-        bottom: 0%;
-    }
-} */
-
 .home{
   position: relative;
   height: 700px;
   width: 100%;
-  background-image: url(../Images/430538.jpg);
+  background-image: linear-gradient(to right,#c2c2c2, #f4f6f6);;
   background-size: cover;
   background-position: center;
   
