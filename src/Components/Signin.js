@@ -54,7 +54,7 @@ class SignIn extends React.Component {
                     <main className="pa4 black-80 ">
                         <div className={`measure ${Styles.Form}`} style={{ textAlign: 'center', fontFamily: 'monospace' }} >
                             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                                <legend className={`f1 fw8 ph0 mh0 ${Styles.Leg}`} style={{color:'#ffc846'}} >Sign In</legend>
+                                <legend className={`f1 fw8 ph0 mh0 ${Styles.Leg}`} style={{color:'#ffc846'}} >Login</legend>
                                 <div className="mt3">
                                     <label className="db fw6 lh-copy f6" style={{color:'white'}} htmlFor="email-address">Email</label>
                                     <input
