@@ -87,7 +87,7 @@ class SignIn extends React.Component {
                                     className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib br2"
                                     style={{ border: '2px solid black' }}
                                     type="submit"
-                                    value="Sign in" />
+                                    value="Login" />
                             </div>
                             <div className="lh-copy mt3">
                                 <p onClick={this.props.register} className={`br2 f6 link dim black db ${Styles.Register}`} style={{ cursor: 'pointer',color:'#ffc846' }}>Register</p>
