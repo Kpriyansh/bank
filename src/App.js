@@ -24,9 +24,9 @@ const App = () => {
   useEffect(() => {
     // checkAutoLogin();
     const token = localStorage.getItem('dashboard');
-   
-  
-    if (token==null||!token.length) {
+    
+    if (token==null||token.length<=2) {
+    
       localStorage.removeItem('dashboard');
       handleRouteChange('signin');
       
