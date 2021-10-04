@@ -10,9 +10,19 @@ class Register extends React.Component {
             phone: '',
         }
     }
-    // componentDidMount(){
-    //     document.body.style.backgroundImage="linear-gradient(at top, #d71e2b, #d71e2b)"
-    // }
+    componentDidMount() {
+        const data = window.localStorage.getItem('local-key');
+  
+        const obj = JSON.parse(data);
+        this.setState(obj);
+       
+    }
+    componentDidUpdate() {
+       
+        window.localStorage.setItem('local-key', JSON.stringify(this.state));
+
+
+    }
     handleNameChange = (event) => {
         this.setState({ name: event.target.value });
     }
@@ -70,15 +80,15 @@ class Register extends React.Component {
                                     <legend className={`f1 fw8 ph0 mh0 ${Styles.Leg}`} style={{ color: '#ffc846' }}>Register</legend>
                                     <div className="mt3">
                                         <label className="db fw6 lh-copy f6" htmlFor="name" style={{ color: 'white' }}>Name</label>
-                                        <input onChange={this.handleNameChange} className="br2 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name" id="name" required />
+                                        <input defaultValue={this.state.name} onChange={this.handleNameChange} className="br2 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name" id="name" required />
                                     </div>
                                     <div className="mt3">
                                         <label className="db fw6 lh-copy f6" htmlFor="email-address" style={{ color: 'white' }}>Email</label>
-                                        <input onChange={this.handleEmailChange} className="br2 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address" id="email-address" required />
+                                        <input defaultValue={this.state.email} onChange={this.handleEmailChange} className="br2 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address" id="email-address" required />
                                     </div>
                                     <div className="mt3">
                                         <label className="db fw6 lh-copy f6" htmlFor="email-address" style={{ color: 'white' }}>Mobile no.</label>
-                                        <input onChange={this.handlePhoneChange} className="br2 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="phone" id="phone" required />
+                                        <input defaultValue={this.state.phone} onChange={this.handlePhoneChange} className="br2 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="phone" id="phone" required />
                                     </div>
                                     <div className="mv3">
                                         <label className={`db fw6 lh-copy f6`} htmlFor="password" style={{ color: 'white' }}>Password</label>

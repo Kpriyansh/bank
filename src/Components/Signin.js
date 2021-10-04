@@ -1,16 +1,32 @@
 import React from 'react';
 import Styles from './Signin.module.css'
+// let f = 0;
+
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            phone:'',
+            phone: '',
             password: ''
         }
     }
+    componentDidMount() {
+        const data = window.localStorage.getItem('local-key');
+        
+        const obj = JSON.parse(data);
+        this.setState(obj);
+       
+    }
+    componentDidUpdate() {
+       
+        window.localStorage.setItem('local-key', JSON.stringify(this.state));
+
+
+    }
     handleEmailChange = (event) => {
-        this.setState({ email: event.target.value });
+    
+            this.setState({ email: event.target.value });
     }
     handlePhoneChange = (event) => {
         this.setState({ phone: event.target.value });
@@ -19,7 +35,7 @@ class SignIn extends React.Component {
         this.setState({ password: event.target.value });
     }
     handleSignin = () => {
-       
+
         fetch('https://india1bank.herokuapp.com/auth/signin', {
             method: 'post',
             headers: {
@@ -33,17 +49,17 @@ class SignIn extends React.Component {
         })
             .then(response => response.json())
             .then(data => {
-                if (data === 'Not found' || data === 'Incorrect password'||!data.username) {
+                if (data === 'Not found' || data === 'Incorrect password' || !data.username) {
                     alert(data);
                 }
                 else {
-                    
+
                     this.props.loadUser(data);
                     this.props.login();
                 }
 
             })
-            .catch(err=>console.log(err));
+            .catch(err => console.log(err));
 
 
     }
@@ -54,25 +70,27 @@ class SignIn extends React.Component {
                     <main className="pa4 black-80 ">
                         <div className={`measure ${Styles.Form}`} style={{ textAlign: 'center', fontFamily: 'monospace' }} >
                             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                                <legend className={`f1 fw8 ph0 mh0 ${Styles.Leg}`} style={{color:'#ffc846'}} >Login</legend>
+                                <legend className={`f1 fw8 ph0 mh0 ${Styles.Leg}`} style={{ color: '#ffc846' }} >Login</legend>
                                 <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" style={{color:'white'}} htmlFor="email-address">Email</label>
+                                    <label className="db fw6 lh-copy f6" style={{ color: 'white' }} htmlFor="email-address">Email</label>
                                     <input
+                                        defaultValue={this.state.email}
                                         onChange={this.handleEmailChange}
                                         className="br2 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                         type="email" name="email-address" id="email-address"
                                         required />
                                 </div>
                                 <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" style={{color:'white'}} htmlFor="email-address">Mobile no.</label>
+                                    <label className="db fw6 lh-copy f6" style={{ color: 'white' }} htmlFor="email-address">Mobile no.</label>
                                     <input
+                                        defaultValue={this.state.phone}
                                         onChange={this.handlePhoneChange}
                                         className="br2 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                         type="text" name="phone" id="phone"
                                         required />
                                 </div>
                                 <div className="mv3">
-                                    <label className={`db fw6 lh-copy f6`} style={{color:'white'}} htmlFor="password">Password</label>
+                                    <label className={`db fw6 lh-copy f6`} style={{ color: 'white' }} htmlFor="password">Password</label>
                                     <input
                                         onChange={this.handlePasswordChange}
                                         className="br2 b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
@@ -90,7 +108,7 @@ class SignIn extends React.Component {
                                     value="Login" />
                             </div>
                             <div className="lh-copy mt3">
-                                <p onClick={this.props.register} className={`br2 f6 link dim black db ${Styles.Register}`} style={{ cursor: 'pointer',color:'#ffc846' }}>Register</p>
+                                <p onClick={this.props.register} className={`br2 f6 link dim black db ${Styles.Register}`} style={{ cursor: 'pointer', color: '#ffc846' }}>Register</p>
 
                             </div>
                         </div>
