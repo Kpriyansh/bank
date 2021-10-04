@@ -20,7 +20,7 @@ class Register extends React.Component {
     componentDidUpdate() {
        
         window.localStorage.setItem('local-key', JSON.stringify(this.state));
-
+        window.localStorage.removeItem('dashboard');
 
     }
     handleNameChange = (event) => {

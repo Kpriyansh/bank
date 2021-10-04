@@ -19,9 +19,13 @@ class SignIn extends React.Component {
        
     }
     componentDidUpdate() {
-       
-        window.localStorage.setItem('local-key', JSON.stringify(this.state));
-
+       const obj={
+           email:this.state.email,
+           phone:this.state.phone,
+           password:''
+       }
+        window.localStorage.setItem('local-key', JSON.stringify(obj));
+        window.localStorage.removeItem('dashboard');
 
     }
     handleEmailChange = (event) => {
